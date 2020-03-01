@@ -1,2 +1,2 @@
-# [alexyuly.com](alexyuly.com)
+# [alexyuly.com](http://alexyuly.com)
 Website of Alex Yuly
