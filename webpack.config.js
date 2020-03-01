@@ -1,13 +1,13 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = function (env, argv) {
-  const development = argv.mode === 'development';
+module.exports = function(env, argv) {
+  const development = argv.mode === "development";
 
   return {
-    mode: development ? 'development' : 'production',
-    devtool: development ? 'inline-source-map' : 'source-map',
+    mode: development ? "development" : "production",
+    devtool: development ? "inline-source-map" : "source-map",
     entry: "./src/index.tsx",
     output: {
       path: path.resolve(__dirname, "dist")
@@ -24,10 +24,10 @@ module.exports = function (env, argv) {
         {
           test: /\.css$/,
           use: [
-            development ? 'style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader'
-          ],
-        },
+            development ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader"
+          ]
+        }
       ]
     },
     plugins: [
