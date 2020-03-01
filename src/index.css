@@ -15,8 +15,13 @@ body {
 }
 
 header {
+  background: #111111;
   height: 33%;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
   position: sticky;
+  top: 0;
 }
 
 h1 {
@@ -41,8 +46,7 @@ p {
 }
 
 main {
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  padding: 0.5rem;
 }
 
 section {
