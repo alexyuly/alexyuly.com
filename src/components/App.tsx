@@ -1,4 +1,5 @@
 import React from "react";
+import TheInteractionModel from "./svg/TheInteractionModel.svg";
 
 interface Props {}
 
@@ -12,32 +13,10 @@ class App extends React.Component<Props> {
         </header>
         <main>
           <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
-          </section>
-          <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
-          </section>
-          <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
-          </section>
-          <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
-          </section>
-          <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
-          </section>
-          <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
-          </section>
-          <section>
-            <h1>This is the title of some content.</h1>
-            <p>This is the body of some content.</p>
+            <h1>The Interaction Model</h1>
+            <a href={TheInteractionModel} target="_blank">
+              <img src={TheInteractionModel} />
+            </a>
           </section>
         </main>
       </div>

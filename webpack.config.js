@@ -27,6 +27,10 @@ module.exports = function(env, argv) {
             development ? "style-loader" : MiniCssExtractPlugin.loader,
             "css-loader"
           ]
+        },
+        {
+          test: /\.svg$/,
+          loader: "file-loader"
         }
       ]
     },
