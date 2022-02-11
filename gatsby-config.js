@@ -10,8 +10,14 @@ module.exports = {
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-s3",
+      options: {
+        bucketName: "alexyuly.com",
+      },
+    },
     "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -27,11 +33,6 @@ module.exports = {
         customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
       },
     },
-    {
-      resolve: "gatsby-plugin-s3",
-      options: {
-        bucketName: "alexyuly.com",
-      },
-    },
+    "gatsby-transformer-sharp",
   ],
 };
