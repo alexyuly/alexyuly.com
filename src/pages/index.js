@@ -39,24 +39,45 @@ const BlogPost = styled.article`
   margin: 80px 0;
 `;
 
-const BlogPostHeading = styled.div`
-  font-family: Signika, serif;
+const BlogPostHeadingAnchor = styled.a`
+  color: #b999ff;
+`;
+
+const BlogPostHeading = styled.section`
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  position: relative;
 
   h2 {
-    font-size: 4rem;
+    font-size: 3rem;
+    line-height: 1.2;
     margin: 20px 0;
   }
 `;
 
-const Timestamp = styled.div`
-  color: #666666;
-  font-family: Signika, serif;
+const Timestamp = styled.section`
+  color: #bbbbbb;
+  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
-  margin: 10px 0;
-  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 10px 0 30px;
+
+  p {
+    margin: 0;
+  }
 `;
 
-const BlogPostContent = styled.div`
+const BlogPostContent = styled.section`
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
   h3 {
     font-size: 2rem;
     margin: 15px 0;
@@ -77,9 +98,11 @@ const BlogPostContent = styled.div`
     margin: 15px 0;
   }
 
-  p {
+  p,
+  ul {
     font-size: 1rem;
-    margin: 10px 0;
+    line-height: 1.4;
+    margin: 15px 0;
   }
 `;
 
@@ -89,18 +112,22 @@ const IndexPage = ({ data }) => {
       {data.allPrismicBlogPost.edges.map(({ node }) => {
         return (
           <BlogPost key={node.uid}>
+            <BlogPostHeadingAnchor href={`#${node.uid}`}>
+              <BlogPostHeading id={node.uid}>
+                <PrismicRichText field={node.data.title.richText} />
+              </BlogPostHeading>
+            </BlogPostHeadingAnchor>
             <Timestamp>
-              <div>
-                Published{" "}
+              <p>
                 <time dateTime={node.first_publication_date}>
                   {new Date(node.first_publication_date).toLocaleDateString(
                     "en-US",
                     { timeZone: "UTC" }
                   )}
                 </time>
-              </div>
+              </p>
               {node.first_publication_date !== node.last_publication_date && (
-                <div>
+                <p>
                   Last updated{" "}
                   <time dateTime={node.last_publication_date}>
                     {new Date(node.last_publication_date).toLocaleDateString(
@@ -108,12 +135,9 @@ const IndexPage = ({ data }) => {
                       { timeZone: "UTC" }
                     )}
                   </time>
-                </div>
+                </p>
               )}
             </Timestamp>
-            <BlogPostHeading>
-              <PrismicRichText field={node.data.title.richText} />
-            </BlogPostHeading>
             <BlogPostContent>
               <PrismicRichText field={node.data.content.richText} />
             </BlogPostContent>

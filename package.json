@@ -17,8 +17,9 @@
     "deploy": "gatsby-plugin-s3 deploy --yes"
   },
   "dependencies": {
-    "@fontsource/lora": "^4.5.4",
-    "@fontsource/signika": "^4.5.4",
+    "@fontsource/eb-garamond": "^4.5.4",
+    "@fontsource/playfair-display-sc": "^4.5.5",
+    "@fontsource/poppins": "^4.5.5",
     "@prismicio/react": "^2.0.6",
     "babel-plugin-styled-components": "^2.0.2",
     "gatsby": "^4.6.2",

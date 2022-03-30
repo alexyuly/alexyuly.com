@@ -3,38 +3,54 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: Lora, serif;
-    font-size: 15px;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
   }
 
   body {
-    background: #cccccc;
-    color: #222255;
+    background: #222222;
+    color: #ffffff;
     margin: 0;
-    padding: 0;
+    padding: 0 80px;
+
+    @media (max-width: 600px) {
+      padding: 0 20px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 `;
 
+const HeadingAnchor = styled.a`
+  color: #ffffff;
+`;
+
 const Heading = styled.h1`
-  background: #cccccc;
-  box-shadow: 0 20px 20px #c0c0c0;
-  font-size: 2rem;
-  font-weight: normal;
+  font-family: "Playfair Display SC", serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.2;
   margin: 0;
-  padding: 20px 40px;
-  position: sticky;
-  top: 0;
+  padding: 20px 0;
 `;
 
 const Main = styled.main`
-  padding: 0 40px;
+  padding: 0;
 `;
 
 const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Heading>Alex Yuly</Heading>
+      <HeadingAnchor href="#">
+        <Heading>The Writings of Alex Yuly</Heading>
+      </HeadingAnchor>
       <Main>{children}</Main>
     </>
   );
