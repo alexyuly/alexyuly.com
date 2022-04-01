@@ -51,7 +51,8 @@ const BlogPostHeading = styled.section`
   h2 {
     font-size: 3rem;
     line-height: 1.2;
-    margin: 20px 0;
+    margin: 0;
+    padding: 70px 0 20px;
   }
 `;
 
