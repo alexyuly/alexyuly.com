@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -91,6 +92,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Helmet title="The Writings of Alex Yuly" />
       <GlobalStyle />
       <HeaderAnchor href="#">
         <Header ref={headerRef} small={smallHeader}>
