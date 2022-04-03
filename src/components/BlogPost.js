@@ -7,7 +7,31 @@ const formatDateString = (dateString) => {
 };
 
 const Root = styled.article`
+  display: flex;
+  flex-flow: column nowrap;
   margin: 80px 0;
+`;
+
+const TopDecoration = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+`;
+
+const TopDecorationLeft = styled.div`
+  background-color: #111111;
+  flex: 1 1 auto;
+`;
+
+const TopDecorationRight = styled.div`
+  border-left: 40px solid #000000;
+  border-top: 40px solid #222222;
+  flex: 0 0 0;
+`;
+
+const Container = styled.section`
+  background-color: #111111;
+  margin: 0;
+  padding: 0 20px 40px;
 `;
 
 const HeadingAnchor = styled.a`
@@ -22,8 +46,7 @@ const Heading = styled.section`
   h2 {
     font-size: 3rem;
     line-height: 1.2;
-    margin: 0;
-    padding: 70px 0 20px;
+    margin: 40px 0 20px;
   }
 `;
 
@@ -87,29 +110,35 @@ const BlogPost = ({
 }) => {
   return (
     <Root id={uid}>
-      <HeadingAnchor href={`#${uid}`}>
-        <Heading>
-          <PrismicRichText field={headingRichText} />
-        </Heading>
-      </HeadingAnchor>
-      <Timestamp>
-        <p>
-          <time dateTime={firstPublicationDate}>
-            {formatDateString(firstPublicationDate)}
-          </time>
-        </p>
-        {firstPublicationDate !== lastPublicationDate && (
+      <TopDecoration>
+        <TopDecorationLeft />
+        <TopDecorationRight />
+      </TopDecoration>
+      <Container>
+        <HeadingAnchor href={`#${uid}`}>
+          <Heading>
+            <PrismicRichText field={headingRichText} />
+          </Heading>
+        </HeadingAnchor>
+        <Timestamp>
           <p>
-            Last updated{" "}
-            <time dateTime={lastPublicationDate}>
-              {formatDateString(lastPublicationDate)}
+            <time dateTime={firstPublicationDate}>
+              {formatDateString(firstPublicationDate)}
             </time>
           </p>
-        )}
-      </Timestamp>
-      <Content>
-        <PrismicRichText field={contentRichText} />
-      </Content>
+          {firstPublicationDate !== lastPublicationDate && (
+            <p>
+              Last updated{" "}
+              <time dateTime={lastPublicationDate}>
+                {formatDateString(lastPublicationDate)}
+              </time>
+            </p>
+          )}
+        </Timestamp>
+        <Content>
+          <PrismicRichText field={contentRichText} />
+        </Content>
+      </Container>
     </Root>
   );
 };

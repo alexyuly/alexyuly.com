@@ -12,11 +12,7 @@ const GlobalStyle = createGlobalStyle`
     background: #222222;
     color: #ffffff;
     margin: 0;
-    padding: 0 80px 80px;
-
-    @media (max-width: 600px) {
-      padding: 0 20px 600px;
-    }
+    padding: 0;
   }
 
   a {
@@ -34,33 +30,45 @@ const HeaderAnchor = styled.a`
 
 const Header = styled.h1`
   background: #222222;
-  box-shadow: 0 20px 20px 20px #222222;
+  box-shadow: 0 20px 40px 20px #222222;
   font-family: "Playfair Display SC", serif;
   font-size: ${(props) => (props.small ? "1rem" : "1.75rem")};
   font-weight: 400;
   line-height: 1.2;
-  margin: 0;
-  padding: 20px 0 0;
+  margin: 0 80px;
+  padding: 20px 0;
   position: sticky;
   top: 0;
   transition: font-size 0.2s ease-in 0.5s;
   z-index: 1;
+
+  @media (max-width: 600px) {
+    margin: 0 20px;
+  }
 `;
 
 const Main = styled.main`
-  padding: 0;
+  margin: 0 80px;
+
+  @media (max-width: 600px) {
+    margin: 0 20px;
+  }
 `;
 
 const Footer = styled.footer`
-  background: linear-gradient(to top, #222222, 99%, #b999ff);
-  border-top: 1px solid #b999ff;
+  background: #111111;
+  border-top: 1px solid #000000;
   color: #bbbbbb;
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 150px 0 0;
-  padding: 20px 0 0;
+  margin: 100px 0 0;
+  padding: 20px 80px;
+
+  @media (max-width: 600px) {
+    padding: 20px;
+  }
 `;
 
 const Layout = ({ children }) => {
