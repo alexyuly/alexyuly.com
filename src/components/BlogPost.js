@@ -68,7 +68,7 @@ const Timestamp = styled.section`
 `;
 
 const Content = styled.section`
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 
   h3,
   h4,
