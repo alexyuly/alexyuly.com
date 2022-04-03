@@ -30,13 +30,13 @@ const HeaderAnchor = styled.a`
 
 const Header = styled.h1`
   background: #222222;
-  box-shadow: 0 20px 40px 20px #222222;
+  box-shadow: 0 5px 10px 10px #222222;
   font-family: "Playfair Display SC", serif;
   font-size: ${(props) => (props.small ? "1rem" : "1.75rem")};
   font-weight: 400;
   line-height: 1.2;
   margin: 0 80px;
-  padding: 20px 0;
+  padding: 20px 0 10px;
   position: sticky;
   top: 0;
   transition: font-size 0.2s ease-in 0.5s;

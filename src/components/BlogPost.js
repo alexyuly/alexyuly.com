@@ -7,28 +7,31 @@ const formatDateString = (dateString) => {
 };
 
 const Root = styled.article`
-  display: flex;
-  flex-flow: column nowrap;
-  margin: 80px 0;
+  padding: 80px 0 0;
 `;
 
-const TopDecoration = styled.div`
+const OuterWrapper = styled.section`
+  display: flex;
+  flex-flow: column nowrap;
+`;
+
+const TopDecoration = styled.section`
   display: flex;
   flex-flow: row nowrap;
 `;
 
-const TopDecorationLeft = styled.div`
+const TopDecorationLeft = styled.section`
   background-color: #111111;
   flex: 1 1 auto;
 `;
 
-const TopDecorationRight = styled.div`
-  border-left: 40px solid #000000;
-  border-top: 40px solid #222222;
+const TopDecorationRight = styled.section`
+  border-left: 30px solid #000000;
+  border-top: 30px solid #222222;
   flex: 0 0 0;
 `;
 
-const Container = styled.section`
+const InnerWrapper = styled.section`
   background-color: #111111;
   margin: 0;
   padding: 0 20px 40px;
@@ -46,7 +49,7 @@ const Heading = styled.section`
   h2 {
     font-size: 3rem;
     line-height: 1.2;
-    margin: 40px 0 20px;
+    margin: 20px 0;
   }
 `;
 
@@ -110,35 +113,37 @@ const BlogPost = ({
 }) => {
   return (
     <Root id={uid}>
-      <TopDecoration>
-        <TopDecorationLeft />
-        <TopDecorationRight />
-      </TopDecoration>
-      <Container>
-        <HeadingAnchor href={`#${uid}`}>
-          <Heading>
-            <PrismicRichText field={headingRichText} />
-          </Heading>
-        </HeadingAnchor>
-        <Timestamp>
-          <p>
-            <time dateTime={firstPublicationDate}>
-              {formatDateString(firstPublicationDate)}
-            </time>
-          </p>
-          {firstPublicationDate !== lastPublicationDate && (
+      <OuterWrapper>
+        <TopDecoration>
+          <TopDecorationLeft />
+          <TopDecorationRight />
+        </TopDecoration>
+        <InnerWrapper>
+          <HeadingAnchor href={`#${uid}`}>
+            <Heading>
+              <PrismicRichText field={headingRichText} />
+            </Heading>
+          </HeadingAnchor>
+          <Timestamp>
             <p>
-              Last updated{" "}
-              <time dateTime={lastPublicationDate}>
-                {formatDateString(lastPublicationDate)}
+              <time dateTime={firstPublicationDate}>
+                {formatDateString(firstPublicationDate)}
               </time>
             </p>
-          )}
-        </Timestamp>
-        <Content>
-          <PrismicRichText field={contentRichText} />
-        </Content>
-      </Container>
+            {firstPublicationDate !== lastPublicationDate && (
+              <p>
+                Last updated{" "}
+                <time dateTime={lastPublicationDate}>
+                  {formatDateString(lastPublicationDate)}
+                </time>
+              </p>
+            )}
+          </Timestamp>
+          <Content>
+            <PrismicRichText field={contentRichText} />
+          </Content>
+        </InnerWrapper>
+      </OuterWrapper>
     </Root>
   );
 };
