@@ -68,6 +68,8 @@ const Timestamp = styled.section`
 `;
 
 const Content = styled.section`
+  overflow-wrap: anywhere;
+
   h3,
   h4,
   h5,
