@@ -102,6 +102,18 @@ const Content = styled.section`
     line-height: 1.4;
     margin: 15px 0;
   }
+
+  a {
+    color: #b999ff;
+  }
+
+  pre {
+    background-color: #222222;
+    font-family: "Inconsolata", monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    padding: 10px;
+  }
 `;
 
 const BlogPost = ({
