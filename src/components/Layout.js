@@ -5,7 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   html {
     font-family: 'EB Garamond', serif;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   body {
@@ -42,7 +42,7 @@ const Header = styled.h1`
   transition: font-size 0.2s ease-in 0.5s;
   z-index: 1;
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     margin: 0 20px;
   }
 `;
@@ -50,7 +50,7 @@ const Header = styled.h1`
 const Main = styled.main`
   margin: 0 80px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     margin: 0 20px;
   }
 `;
@@ -66,7 +66,7 @@ const Footer = styled.footer`
   margin: 100px 0 0;
   padding: 20px 80px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     padding: 20px;
   }
 `;

@@ -7,6 +7,7 @@ const formatDateString = (dateString) => {
 };
 
 const Root = styled.article`
+  max-width: 1000px;
   padding: 80px 0 0;
 `;
 
