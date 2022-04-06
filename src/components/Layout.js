@@ -100,23 +100,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Helmet>
-        <title>The Writings of Alex Yuly</title>
-        {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-99VEWB99DV"
-        ></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-99VEWB99DV');
-          `}
-        </script>
-      </Helmet>
+      <Helmet title="The Writings of Alex Yuly" />
       <GlobalStyle />
       <HeaderAnchor href="#">
         <Header ref={headerRef} small={smallHeader}>

@@ -8,6 +8,12 @@ module.exports = {
     siteUrl: "https://www.alexyuly.com",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-gtag",
+      options: {
+        trackingIds: ["G-99VEWB99DV"],
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     {
