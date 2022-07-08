@@ -1,114 +1,110 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet";
 import styled, { createGlobalStyle } from "styled-components";
+import IconBoxClosed from "../images/AlexYulyWebsite_BoxClosed.svg";
+import IconBoxOpen from "../images/AlexYulyWebsite_BoxOpen.svg";
+import IconBookClosed from "../images/AlexYulyWebsite_BookClosed.svg";
+import IconBookOpen from "../images/AlexYulyWebsite_BookOpen.svg";
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-family: 'EB Garamond', serif;
-    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
   }
 
   body {
-    background: #222222;
-    color: #ffffff;
+    background: #202124;
+    color: #e8eaed;
     margin: 0;
     padding: 0;
   }
 
   a {
+    color: #e8eaed;
     text-decoration: none;
   }
 
   a:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 `;
 
-const HeaderAnchor = styled.a`
-  color: #ffffff;
-`;
+const Content = styled.div`
+  margin: 0 auto;
+  max-width: 800px;
 
-const Header = styled.h1`
-  background: #222222;
-  box-shadow: 0 5px 10px 10px #222222;
-  font-family: "Playfair Display SC", serif;
-  font-size: ${(props) => (props.small ? "1rem" : "1.75rem")};
-  font-weight: 400;
-  line-height: 1.2;
-  margin: 0 80px;
-  padding: 20px 0 10px;
-  position: sticky;
-  top: 0;
-  transition: font-size 0.2s ease-in 0.5s;
-  z-index: 1;
-
-  @media (max-width: 800px) {
+  @media (max-width: 840px) {
     margin: 0 20px;
   }
 `;
 
-const Main = styled.main`
-  margin: 0 80px;
-
-  @media (max-width: 800px) {
-    margin: 0 20px;
-  }
+const HeadingPrimary = styled.h1`
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 40px 0;
+  padding: 0;
+  text-transform: uppercase;
 `;
 
-const Footer = styled.footer`
-  background: #111111;
-  border-top: 1px solid #000000;
-  color: #bbbbbb;
-  font-family: "Poppins", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  line-height: 1.2;
-  margin: 100px 0 0;
-  padding: 20px 80px;
+const Nav = styled.nav`
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+`;
 
-  @media (max-width: 800px) {
-    padding: 20px;
+const NavItem = styled.a`
+  border-bottom: 4px solid
+    ${(props) => (props.selected ? "#e8eaed" : "transparent")};
+  display: flex;
+  flex: 0 0 100px;
+  flex-flow: column nowrap;
+  font-size: 1.25rem;
+  font-weight: ${(props) => (props.selected ? 700 : 500)};
+  gap: 8px;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &::before {
+    content: url(${(props) => (props.selected ? props.iconOn : props.iconOff)});
+  }
+
+  &:hover {
+    background: #34363b;
+    border-bottom: 4px solid #575859;
+
+    &::before {
+      content: url(${(props) => props.iconOn});
+    }
   }
 `;
 
 const Layout = ({ children }) => {
-  const headerRef = useRef(null);
-  const scrollAnimationFrameRef = useRef(null);
-
-  const [smallHeader, setSmallHeader] = useState(false);
-
-  useEffect(() => {
-    const handleSetSmallHeader = () => {
-      setSmallHeader(
-        document.documentElement.scrollTop > headerRef.current.offsetHeight
-      );
-    };
-    const handleScroll = () => {
-      if (scrollAnimationFrameRef.current) {
-        cancelAnimationFrame(scrollAnimationFrameRef.current);
-      }
-      scrollAnimationFrameRef.current = requestAnimationFrame(() => {
-        handleSetSmallHeader();
-      });
-    };
-    handleSetSmallHeader();
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
-      <Helmet title="The Writings of Alex Yuly" />
+      <Helmet title="Alex Yuly" />
       <GlobalStyle />
-      <HeaderAnchor href="#">
-        <Header ref={headerRef} small={smallHeader}>
-          The Writings of Alex Yuly
-        </Header>
-      </HeaderAnchor>
-      <Main>{children}</Main>
-      <Footer>Copyright &copy; 2022 Alex Yuly</Footer>
+      <Content>
+        <HeadingPrimary>Alex Yuly</HeadingPrimary>
+        <Nav>
+          <NavItem
+            href="#"
+            iconOff={IconBookClosed}
+            iconOn={IconBookOpen}
+            selected
+          >
+            Writings
+          </NavItem>
+          <NavItem href="#" iconOff={IconBoxClosed} iconOn={IconBoxOpen}>
+            Projects
+          </NavItem>
+          <NavItem href="#">About</NavItem>
+        </Nav>
+        {children}
+      </Content>
     </>
   );
 };

@@ -17,10 +17,8 @@
     "deploy": "gatsby-plugin-s3 deploy --yes"
   },
   "dependencies": {
-    "@fontsource/eb-garamond": "^4.5.4",
-    "@fontsource/inconsolata": "^4.5.4",
-    "@fontsource/playfair-display-sc": "^4.5.5",
-    "@fontsource/poppins": "^4.5.5",
+    "@fontsource/libre-baskerville": "^4.5.8",
+    "@fontsource/quicksand": "^4.5.9",
     "@prismicio/react": "^2.0.6",
     "babel-plugin-styled-components": "^2.0.2",
     "gatsby": "^4.6.2",

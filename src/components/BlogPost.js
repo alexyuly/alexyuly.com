@@ -8,7 +8,7 @@ const formatDateString = (dateString) => {
 
 const Root = styled.article`
   max-width: 1000px;
-  padding: 80px 0 0;
+  padding: 0;
 `;
 
 const OuterWrapper = styled.section`
@@ -16,39 +16,21 @@ const OuterWrapper = styled.section`
   flex-flow: column nowrap;
 `;
 
-const TopDecoration = styled.section`
-  display: flex;
-  flex-flow: row nowrap;
-`;
-
-const TopDecorationLeft = styled.section`
-  background-color: #111111;
-  flex: 1 1 auto;
-`;
-
-const TopDecorationRight = styled.section`
-  border-left: 30px solid #000000;
-  border-top: 30px solid #222222;
-  flex: 0 0 0;
-`;
-
 const InnerWrapper = styled.section`
-  background-color: #111111;
-  margin: 0;
-  padding: 0 20px 40px;
+  margin: 32px 0;
+  padding: 0;
 `;
 
 const HeadingAnchor = styled.a`
-  color: #b999ff;
+  color: #add8e6;
 `;
 
 const Heading = styled.section`
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   position: relative;
 
   h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.2;
     margin: 20px 0;
   }
@@ -56,7 +38,6 @@ const Heading = styled.section`
 
 const Timestamp = styled.section`
   color: #bbbbbb;
-  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.2;
@@ -74,13 +55,12 @@ const Content = styled.section`
   h4,
   h5,
   h6 {
-    font-family: "Poppins", sans-serif;
     font-weight: 600;
     line-height: 1.2;
   }
 
   h3 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin: 15px 0;
   }
 
@@ -101,19 +81,21 @@ const Content = styled.section`
 
   p,
   ul {
+    font-family: "Libre Baskerville", serif;
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.5;
     margin: 15px 0;
   }
 
   a {
-    color: #b999ff;
+    color: #add8e6;
   }
 
   pre {
-    background-color: #222222;
-    font-family: "Inconsolata", monospace;
-    font-size: 0.9rem;
+    background-color: #333333;
+    font-family: monospace;
+    font-size: 1rem;
+    line-height: 1.5;
     overflow-x: auto;
     padding: 10px;
   }
@@ -129,10 +111,6 @@ const BlogPost = ({
   return (
     <Root id={uid}>
       <OuterWrapper>
-        <TopDecoration>
-          <TopDecorationLeft />
-          <TopDecorationRight />
-        </TopDecoration>
         <InnerWrapper>
           <HeadingAnchor href={`#${uid}`}>
             <Heading>
