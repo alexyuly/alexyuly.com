@@ -1,10 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import styled, { createGlobalStyle } from "styled-components";
-import IconBoxClosed from "../images/AlexYulyWebsite_BoxClosed.svg";
-import IconBoxOpen from "../images/AlexYulyWebsite_BoxOpen.svg";
-import IconBookClosed from "../images/AlexYulyWebsite_BookClosed.svg";
-import IconBookOpen from "../images/AlexYulyWebsite_BookOpen.svg";
+import styled, { createGlobalStyle, css, keyframes } from "styled-components";
+
+const forZeroTo = (count, fn) => new Array(count).fill().map((_, i) => fn(i));
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -32,54 +30,57 @@ const GlobalStyle = createGlobalStyle`
 const Content = styled.div`
   margin: 0 auto;
   max-width: 800px;
-
-  @media (max-width: 840px) {
-    margin: 0 20px;
-  }
-`;
-
-const HeadingPrimary = styled.h1`
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 40px 0;
-  padding: 0;
-  text-transform: uppercase;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  flex-flow: row wrap;
-  gap: 8px;
-`;
-
-const NavItem = styled.a`
-  border-bottom: 4px solid
-    ${(props) => (props.selected ? "#e8eaed" : "transparent")};
-  display: flex;
-  flex: 0 0 100px;
-  flex-flow: column nowrap;
-  font-size: 1.25rem;
-  font-weight: ${(props) => (props.selected ? 700 : 500)};
-  gap: 8px;
-  justify-content: flex-end;
-  margin: 0;
-  padding: 16px;
   text-align: center;
-  text-transform: uppercase;
 
-  &::before {
-    content: url(${(props) => (props.selected ? props.iconOn : props.iconOff)});
+  @media (max-width: 832px) {
+    margin: 0 16px;
   }
+`;
 
-  &:hover {
-    background: #34363b;
-    border-bottom: 4px solid #575859;
+const Heading = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 2rem;
+  justify-content: center;
+  margin: 32px 0;
+`;
 
-    &::before {
-      content: url(${(props) => props.iconOn});
-    }
+const headingBlockAnimation = keyframes`
+  100% {
+    transform: translate3d(0, 0, 0);
   }
+`;
+
+const HeadingBlock = styled.div`
+  animation: 1s ${headingBlockAnimation} forwards;
+  transform: translate3d(0, calc(-100% - 16px), 0);
+  width: 32px;
+
+  ${forZeroTo(
+    9,
+    (i) => css`
+      &:nth-child(${i + 1}) {
+        animation-delay: ${100 * i}ms;
+      }
+    `
+  )}
+`;
+
+const dividerAnimation = keyframes`
+  100% {
+    height: 2px;
+    margin: 39px 0;
+    width: 100%;
+  }
+`;
+
+const Divider = styled.hr`
+  animation: 1.8s ${dividerAnimation} forwards;
+  background: #e8eaed;
+  border: none;
+  height: 16px;
+  margin: 32px 50%;
+  width: 0%;
 `;
 
 const Layout = ({ children }) => {
@@ -88,22 +89,18 @@ const Layout = ({ children }) => {
       <Helmet title="Alex Yuly" />
       <GlobalStyle />
       <Content>
-        <HeadingPrimary>Alex Yuly</HeadingPrimary>
-        <Nav>
-          <NavItem
-            href="#"
-            iconOff={IconBookClosed}
-            iconOn={IconBookOpen}
-            selected
-          >
-            Writings
-          </NavItem>
-          <NavItem href="#" iconOff={IconBoxClosed} iconOn={IconBoxOpen}>
-            Projects
-          </NavItem>
-          <NavItem href="#">About</NavItem>
-        </Nav>
-        {children}
+        <Heading>
+          <HeadingBlock>A</HeadingBlock>
+          <HeadingBlock>L</HeadingBlock>
+          <HeadingBlock>E</HeadingBlock>
+          <HeadingBlock>X</HeadingBlock>
+          <HeadingBlock>&nbsp;</HeadingBlock>
+          <HeadingBlock>Y</HeadingBlock>
+          <HeadingBlock>U</HeadingBlock>
+          <HeadingBlock>L</HeadingBlock>
+          <HeadingBlock>Y</HeadingBlock>
+        </Heading>
+        <Divider />
       </Content>
     </>
   );
